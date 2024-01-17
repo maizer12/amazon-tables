@@ -1,0 +1,24 @@
+.table {
+	background-color: var(--white);
+	width: 100%;
+	border: 1px solid var(--grey-light);
+	margin-bottom: 35px;
+
+	th {
+		border: 1px solid var(--grey-light);
+		padding-top: 15px;
+		padding-bottom: 15px;
+		border-collapse: collapse;
+	}
+
+	td {
+		border: 1px solid var(--grey-light);
+		border-collapse: collapse;
+	}
+}
+.content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 11px;
+}

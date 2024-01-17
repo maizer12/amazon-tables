@@ -1,0 +1,22 @@
+[
+	{ "id": "1", "email": "john@example.com", "authToken": "abcdef1234", "creationDate": "2020-01-01" },
+	{ "id": "2", "email": "mary@example.com", "authToken": "ghijkl5678", "creationDate": "2020-02-15" },
+	{ "id": "3", "email": "peter@example.com", "authToken": "mnopqr9012", "creationDate": "2020-03-22" },
+	{ "id": "4", "email": "sarah@example.com", "authToken": "stuvwxyz3456", "creationDate": "2020-04-11" },
+	{ "id": "5", "email": "adam@example.com", "authToken": "abcdef1234", "creationDate": "2020-05-27" },
+	{ "id": "6", "email": "eve@example.com", "authToken": "ghijkl5678", "creationDate": "2020-06-03" },
+	{ "id": "7", "email": "joe@example.com", "authToken": "mnopqr9012", "creationDate": "2020-07-19" },
+	{ "id": "8", "email": "anna@example.com", "authToken": "stuvwxyz3456", "creationDate": "2020-08-05" },
+	{ "id": "9", "email": "mike@example.com", "authToken": "abcdef1234", "creationDate": "2020-09-22" },
+	{ "id": "10", "email": "liz@example.com", "authToken": "ghijkl5678", "creationDate": "2020-10-08" },
+	{ "id": "11", "email": "bill@example.com", "authToken": "mnopqr9012", "creationDate": "2020-11-28" },
+	{ "id": "12", "email": "maria@example.com", "authToken": "stuvwxyz3456", "creationDate": "2020-12-14" },
+	{ "id": "13", "email": "dan@example.com", "authToken": "abcdef1234", "creationDate": "2021-01-03" },
+	{ "id": "14", "email": "kate@example.com", "authToken": "ghijkl5678", "creationDate": "2021-02-21" },
+	{ "id": "15", "email": "mark@example.com", "authToken": "mnopqr9012", "creationDate": "2021-03-06" },
+	{ "id": "16", "email": "bella@example.com", "authToken": "stuvwxyz3456", "creationDate": "2021-04-18" },
+	{ "id": "17", "email": "nick@example.com", "authToken": "abcdef1234", "creationDate": "2021-05-29" },
+	{ "id": "18", "email": "emma@example.com", "authToken": "ghijkl5678", "creationDate": "2021-06-15" },
+	{ "id": "19", "email": "alex@example.com", "authToken": "mnopqr9012", "creationDate": "2021-07-24" },
+	{ "id": "20", "email": "lily@example.com", "authToken": "stuvwxyz3456", "creationDate": "2021-08-11" }
+]

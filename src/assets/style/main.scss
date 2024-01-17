@@ -1,0 +1,19 @@
+@import './null.scss';
+@import './vars.scss';
+
+body {
+	background-color: var(--white-blue);
+	color: var(--black);
+	font-family: 'Noto Sans';
+	font-weight: 400px;
+}
+
+.container {
+	max-width: 1200px;
+	width: 100%;
+	padding: 0 15px;
+	margin: 0 auto;
+}
+.active {
+	font-weight: 700;
+}
