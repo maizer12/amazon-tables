@@ -1,10 +1,9 @@
 import { FC, useState, useEffect, useRef } from 'react';
-import { DropdownProps } from './Dropdown.props';
-import cn from 'classnames';
+import { DropdownItemType, DropdownProps } from './Dropdown.props';
 import { Button } from '../../common';
 import style from './Dropdown.module.scss';
 
-export const Dropdown: FC<DropdownProps> = () => {
+export const Dropdown: FC<DropdownProps> = ({ items, changeDropdown, activeItem }) => {
 	const [open, setOpen] = useState<boolean>(false);
 	const windowRef = useRef<HTMLDivElement>(null);
 
@@ -26,6 +25,11 @@ export const Dropdown: FC<DropdownProps> = () => {
 		};
 	}, [windowRef, setOpen]);
 
+	const selectItem = (e: DropdownItemType) => {
+		changeDropdown(e);
+		setOpen(false);
+	};
+
 	return (
 		<div className={style.dropdown} ref={windowRef}>
 			<Button onClick={() => setOpen(!open)} variable='primary' arrow='bottom'>
@@ -33,8 +37,11 @@ export const Dropdown: FC<DropdownProps> = () => {
 			</Button>
 			{open && (
 				<ul className={style.list}>
-					<li>Email</li>
-					<li>Creation Date</li>
+					{items.map(e => (
+						<li key={e.value} onClick={() => selectItem(e)} className={activeItem === e.value ? style.active : ''}>
+							{e.name}
+						</li>
+					))}
 				</ul>
 			)}
 		</div>

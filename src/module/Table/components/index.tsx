@@ -8,19 +8,23 @@ import { TableProps } from './Table.props';
 import { tableHeaderConstants as constants } from '../constants';
 import { fetchData } from '../api/fetch';
 import { useParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { setModel } from '../store/tableSlice';
 
 const Table: FC<TableProps> = ({ model }) => {
+	const dispatch = useAppDispatch();
 	const { id } = useParams();
 	const [items, setItems] = useState<any[]>([]);
-	const [status, setStatus] = useState<'pending' | '' | 'reject'>('');
+	const [status, setStatus] = useState<'loading' | 'error' | 'empty' | ''>('');
 	const [page, setPage] = useState<number>(1);
-	const [totalPage, setTotalPage] = useState<number>(0);
 
 	useEffect(() => {
 		const getData = async () => {
+			setStatus('loading');
 			try {
 				const res = await fetchData(model, { page, id });
 				setItems(res);
+				setStatus('');
 			} catch (err) {
 				return err;
 			}
@@ -29,8 +33,10 @@ const Table: FC<TableProps> = ({ model }) => {
 		getData();
 	}, [page]);
 
-	if (status === 'reject') return <>Error</>;
-	if (status === 'pending') return <>Loading...</>;
+	useEffect(() => {
+		dispatch(setModel(model));
+	}, []);
+
 	const checkView = model === 'accounts' ? 'profile' : 'campaign';
 	const view = model !== 'campaign' && checkView;
 
@@ -38,8 +44,8 @@ const Table: FC<TableProps> = ({ model }) => {
 		<div className={style.wrapper}>
 			<TableHeader />
 			<Search />
-			<TableComponent columns={constants[model]} data={items} view={view} />
-			<Pagination count={totalPage} active={page} setPage={setPage} />
+			<TableComponent columns={constants[model]} data={items} view={view} page={page} status={status} />
+			{items.length >= 10 && <Pagination count={Math.ceil(items.length / 10)} active={page} setPage={setPage} />}
 		</div>
 	);
 };

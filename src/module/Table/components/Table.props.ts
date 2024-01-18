@@ -1,4 +1,6 @@
+import { ModelType } from '../@types/ModelType';
+
 export interface TableProps {
-	model: 'accounts' | 'profile' | 'campaign';
+	model: ModelType;
 	id?: string;
 }

@@ -15,7 +15,6 @@ const CAMPAIGNS_URL = API_KEY + 'campaigns';
 
 export const fetchAccounts = async ({ page }: Arguments): Promise<Account[]> => {
 	const params = {
-		limit: 10,
 		page,
 	};
 
@@ -25,8 +24,7 @@ export const fetchAccounts = async ({ page }: Arguments): Promise<Account[]> => 
 
 export const fetchCompany = async ({ page, id }: Arguments): Promise<any[]> => {
 	const params = {
-		profileId: id,
-		limit: 10,
+		profileId: 'profile' + id + 'Id',
 		page,
 	};
 
@@ -36,8 +34,7 @@ export const fetchCompany = async ({ page, id }: Arguments): Promise<any[]> => {
 
 export const fetchProfile = async ({ page, id }: Arguments): Promise<any[]> => {
 	const params = {
-		accountId: 'account' + id,
-		limit: 10,
+		accountId: 'account' + id + 'Id',
 		page,
 	};
 
