@@ -18,14 +18,13 @@ export const tableHeaderConstants: HeaderTypes = {
 	],
 	profile: [
 		{ name: 'ID:', key: 'id' },
-		{ name: 'Email:', key: 'email' },
-		{ name: 'Auth Token:', key: 'authToken' },
-		{ name: 'Creation Date:', key: 'creationDate' },
+		{ name: 'Country:', key: 'country' },
+		{ name: 'Marketplace:', key: 'marketplace' },
 	],
 	campaign: [
 		{ name: 'ID:', key: 'id' },
-		{ name: 'Email:', key: 'email' },
-		{ name: 'Auth Token:', key: 'authToken' },
-		{ name: 'Creation Date:', key: 'creationDate' },
+		{ name: 'Clicks:', key: 'clicks' },
+		{ name: 'Cost:', key: 'cost' },
+		{ name: 'Date:', key: 'date' },
 	],
 };

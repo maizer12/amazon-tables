@@ -1,8 +1,12 @@
 .table {
 	background-color: var(--white);
 	width: 100%;
-	border: 1px solid var(--grey-light);
 	margin-bottom: 35px;
+	min-height: 661px;
+	table {
+		border-width: 0px;
+		width: 100%;
+	}
 
 	th {
 		border: 1px solid var(--grey-light);

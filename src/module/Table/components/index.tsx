@@ -2,43 +2,43 @@ import { FC, useEffect, useState } from 'react';
 import Pagination from '../../../components/Pagination';
 import TableHeader from './TableHeader';
 import Search from '../../../components/Search';
-import { fetchTableItems } from '../api/fetchTableItems';
-import { AccountsTypes } from '../../../@types/AccountsTypes';
 import TableComponent from './TableComponent';
 import style from './Table.module.scss';
 import { TableProps } from './Table.props';
+import { tableHeaderConstants as constants } from '../constants';
+import { fetchData } from '../api/fetch';
+import { useParams } from 'react-router-dom';
 
-const Table: FC<TableProps> = ({ model, id }) => {
-	const [items, setItems] = useState<AccountsTypes[]>([]);
+const Table: FC<TableProps> = ({ model }) => {
+	const { id } = useParams();
+	const [items, setItems] = useState<any[]>([]);
 	const [status, setStatus] = useState<'pending' | '' | 'reject'>('');
 	const [page, setPage] = useState<number>(1);
 	const [totalPage, setTotalPage] = useState<number>(0);
 
 	useEffect(() => {
-		const fetchData = async () => {
-			setStatus('pending');
+		const getData = async () => {
 			try {
-				const data = await fetchTableItems({ page, path: model });
-				// setItems(data.items);
-				// setTotalPage(data.meta.total_pages);
-				// setPage(data.meta.current_page);
-				// setStatus('');
-			} catch (error) {
-				setStatus('reject');
+				const res = await fetchData(model, { page, id });
+				setItems(res);
+			} catch (err) {
+				return err;
 			}
 		};
 
-		fetchData();
+		getData();
 	}, [page]);
 
 	if (status === 'reject') return <>Error</>;
 	if (status === 'pending') return <>Loading...</>;
+	const checkView = model === 'accounts' ? 'profile' : 'campaign';
+	const view = model !== 'campaign' && checkView;
 
 	return (
 		<div className={style.wrapper}>
 			<TableHeader />
 			<Search />
-			{/* <TableComponent items={items} model={model} /> */}
+			<TableComponent columns={constants[model]} data={items} view={view} />
 			<Pagination count={totalPage} active={page} setPage={setPage} />
 		</div>
 	);
