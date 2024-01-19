@@ -6,8 +6,8 @@ const storedData = localStorage.getItem('setting');
 const data: SettingSliceActions = storedData ? JSON.parse(storedData) : '';
 
 const initialState: SettingSliceActions = {
-	whiteTheme: data.whiteTheme,
-	language: data.language,
+	whiteTheme: data.whiteTheme || false,
+	language: data.language || 'ue',
 };
 
 const settingSlice = createSlice({

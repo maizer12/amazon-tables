@@ -5,7 +5,7 @@ import style from './Button.module.scss';
 import { Link } from 'react-router-dom';
 
 export const Button: FC<ButtonProps> = ({ variable, children, className, arrow, path, ...props }) => {
-	const classNames: string = cn(style.button, style[variable], style.button, arrow && style[arrow]);
+	const classNames: string = cn(style.button, style[variable], style.button, className, arrow && style[arrow]);
 
 	if (path)
 		return (
