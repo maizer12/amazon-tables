@@ -2,17 +2,19 @@ import { FC } from 'react';
 import { Button, HTag, Spinner } from '../../../../common';
 import { TableComponentProps } from './TableBody.ts';
 import style from './TableBody.module.scss';
+import { useAppSelector } from '../../../../hooks/index.ts';
 
 const TableBody: FC<TableComponentProps> = ({ columns, data, view, page, status }) => {
+	const language = useAppSelector(status => status.settingSlice.language);
 	const showItems = { min: page * 10 - 10, max: page * 10 };
 
-	if (status === 'loading')
+	const textError = language === 'ue' ? '*An error occurred while fetching data. Please try again.' : '*Виникла помилка під час отримання даних. Будь ласка, спробуйте ще раз.';
+
+	if (status === 'error' || status === 'loading')
 		return (
 			<tr>
 				<td colSpan={columns.length + 2}>
-					<div className={style.spinner}>
-						<Spinner size='md' />
-					</div>
+					<div className={style.status}>{status === 'loading' ? <Spinner size='md' /> : <HTag tag='h3'>{textError}</HTag>}</div>
 				</td>
 			</tr>
 		);

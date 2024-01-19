@@ -3,8 +3,14 @@ import { HTag } from '../../../../common';
 import { TableComponentProps } from './TableComponent.props.ts';
 import style from './TableComponent.module.scss';
 import TableBody from '../TableBody/index.tsx';
+import { useAppSelector } from '../../../../hooks/index.ts';
 
-const TableComponent: FC<TableComponentProps> = ({ columns, data, view, page, status }) => {
+const TableComponent: FC<TableComponentProps> = ({ columns, data }) => {
+	const { page, status, model } = useAppSelector(state => state.tableSlice);
+
+	const checkView = model === 'accounts' ? 'profile' : 'campaign';
+	const view = model !== 'campaign' && checkView;
+
 	return (
 		<div className={style.table + ' table'}>
 			<table>
