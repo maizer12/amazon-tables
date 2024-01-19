@@ -11,7 +11,7 @@ export const HTag: FC<HTagProps> = ({ tag, children }) => {
 		case 'h3':
 			return <h3 className={style.h3}>{children}</h3>;
 		case 'h4':
-			return <h3 className={style.h4}>{children}</h3>;
+			return <h4 className={style.h4}>{children}</h4>;
 		default:
 			return <></>;
 	}

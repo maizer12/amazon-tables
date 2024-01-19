@@ -7,7 +7,7 @@ const Pagination: FC<PaginationProps> = ({ count, active, setPage }) => {
 	const arr = [...new Array(count)];
 
 	return (
-		<ul className={style.pagination}>
+		<ul className={style.pagination + ' anim-transform'}>
 			<li>
 				<Button variable='outline' arrow='left' disabled={!(active - 1)} onClick={() => setPage(active - 1)} />
 			</li>

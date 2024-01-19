@@ -3,7 +3,7 @@ import { DropdownItemType, DropdownProps } from './Dropdown.props';
 import { Button } from '../../common';
 import style from './Dropdown.module.scss';
 
-export const Dropdown: FC<DropdownProps> = ({ items, changeDropdown, activeItem }) => {
+export const Dropdown: FC<DropdownProps> = ({ items, changeDropdown, activeItem, title, notChange }) => {
 	const [open, setOpen] = useState<boolean>(false);
 	const windowRef = useRef<HTMLDivElement>(null);
 
@@ -40,10 +40,10 @@ export const Dropdown: FC<DropdownProps> = ({ items, changeDropdown, activeItem 
 	return (
 		<div className={style.dropdown} ref={windowRef}>
 			<Button onClick={() => setOpen(!open)} variable='primary' arrow='bottom'>
-				Sort by: {fullItem ? fullItem.name : 'none'}
+				{`${title} ${fullItem ? fullItem.name : notChange}`}
 			</Button>
 			{open && (
-				<ul className={style.list}>
+				<ul className={style.list + ' dropdown-list'}>
 					{items.map(e => (
 						<li key={e.value} onClick={() => selectItem(e)} className={activeItem === e.value ? style.active : ''}>
 							{e.name}

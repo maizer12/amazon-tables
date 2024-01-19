@@ -15,6 +15,17 @@ body {
 	padding: 0 15px;
 	margin: 0 auto;
 }
-.active {
-	font-weight: 700;
+.dark-team {
+	.table {
+		background-color: #ebebeb;
+
+		table {
+			background-color: #ebebeb;
+		}
+	}
+
+	.dropdown-list {
+		background-color: #fff;
+		border: 1px solid #eee;
+	}
 }

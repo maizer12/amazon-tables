@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { ModelType } from '../@types/ModelType';
+import { ModelType } from '../types/ModelType';
 import { TableSliceStates } from './types';
 import { DropdownItemType } from '../../../components/Dropdown/Dropdown.props';
 

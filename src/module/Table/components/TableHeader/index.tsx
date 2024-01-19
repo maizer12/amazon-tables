@@ -12,18 +12,21 @@ import { setSort } from '../../store/tableSlice';
 const TableHeader: FC<TableHeaderProps> = () => {
 	const dispatch = useDispatch();
 	const { model, sort } = useAppSelector(state => state.tableSlice);
-	const sortItems = sortConstants[model];
+	const { language } = useAppSelector(state => state.settingSlice);
+	const sortItems = sortConstants[language][model];
 
 	const changeSort = (e: IDropdownItem) => {
 		dispatch(setSort(e));
 	};
 
 	const sortValue = sort && 'value' in sort ? sort.value : '';
+	const sortTitle = language === 'ua' ? 'Сортувати за:' : 'Sort by:';
+	const sortEmpty = language === 'ua' ? 'пусто' : 'none';
 
 	return (
-		<div className={style.header}>
-			<HTag tag='h1'>{tableTitleConstant[model]}</HTag>
-			{sortItems && <Dropdown changeDropdown={changeSort} activeItem={sortValue} items={sortItems} />}
+		<div className={style.header + ' anim-opacity'}>
+			<HTag tag='h1'>{tableTitleConstant[language][model]}</HTag>
+			{sortItems && <Dropdown title={sortTitle} notChange={sortEmpty} changeDropdown={changeSort} activeItem={sortValue} items={sortItems} />}
 		</div>
 	);
 };

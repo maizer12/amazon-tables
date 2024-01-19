@@ -4,5 +4,5 @@ import style from './Spinner.module.scss';
 import { SpinnerProps } from './Spinner.props';
 
 export const Spinner: FC<SpinnerProps> = ({ size }) => {
-	return <div className={cn(style.spinner, style[size])}></div>;
+	return <div className={cn(style.spinner, style[size], 'anim-opacity')}></div>;
 };

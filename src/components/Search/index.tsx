@@ -1,4 +1,4 @@
-import React, { FC, useState, useCallback, ChangeEvent } from 'react';
+import { FC, useState, useCallback, ChangeEvent } from 'react';
 import debounce from 'lodash.debounce';
 import { Button } from '../../common';
 import { useAppDispatch } from '../../hooks';
@@ -17,7 +17,6 @@ const Search: FC<SearchProps> = ({}) => {
 
 	const startSearch = useCallback(
 		debounce((searchValue: string) => {
-			console.log(searchValue);
 			dispatch(setSearch(searchValue));
 		}, 350),
 		[dispatch]
@@ -30,7 +29,7 @@ const Search: FC<SearchProps> = ({}) => {
 	};
 
 	return (
-		<label className={style.search}>
+		<label className={style.search + ' anim-opacity'}>
 			<div className={style.input}>
 				<input type='text' onChange={changeValue} value={value} placeholder='Search for...' />
 				{!!value.length && (

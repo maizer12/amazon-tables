@@ -6,7 +6,7 @@ import TableBody from '../TableBody/index.tsx';
 
 const TableComponent: FC<TableComponentProps> = ({ columns, data, view, page, status }) => {
 	return (
-		<div className={style.table}>
+		<div className={style.table + ' table'}>
 			<table>
 				<thead>
 					<tr>
@@ -25,7 +25,7 @@ const TableComponent: FC<TableComponentProps> = ({ columns, data, view, page, st
 						)}
 					</tr>
 				</thead>
-				<tbody>
+				<tbody className='anim-opacity'>
 					<TableBody view={view} data={data} status={status} page={page} columns={columns} />
 				</tbody>
 			</table>

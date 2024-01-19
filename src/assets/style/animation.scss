@@ -1,10 +1,10 @@
 @keyframes animTransform {
 	0% {
-		transform: translateX(10px);
+		transform: translateX(-20%);
 		opacity: 0;
 	}
 	100% {
-		transform: translateX(10px);
+		transform: translateX(0);
 		opacity: 1;
 	}
 }

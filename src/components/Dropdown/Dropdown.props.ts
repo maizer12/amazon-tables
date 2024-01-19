@@ -6,4 +6,6 @@ export interface DropdownProps {
 	items: DropdownItemType[];
 	activeItem: string | number;
 	changeDropdown: (a: DropdownItemType) => void;
+	title: string;
+	notChange: string;
 }

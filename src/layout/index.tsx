@@ -2,10 +2,15 @@ import { FC } from 'react';
 import { LayoutProps } from './Layout.props';
 import style from './Layout.module.scss';
 import Header from './Header';
+import { useAppSelector } from '../hooks';
+import cn from 'classnames';
 
 const Layout: FC<LayoutProps> = ({ children }) => {
+	const { whiteTheme } = useAppSelector(state => state.settingSlice);
+	const classNames = cn(style.wrapper, { ['dark-team']: !whiteTheme });
+
 	return (
-		<div className={style.wrapper}>
+		<div className={classNames}>
 			<Header />
 			{children}
 		</div>

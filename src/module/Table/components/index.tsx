@@ -13,6 +13,7 @@ import { setModel } from '../store/tableSlice';
 
 const Table: FC<TableProps> = ({ model }) => {
 	const { sort, search } = useAppSelector(state => state.tableSlice);
+	const { language } = useAppSelector(state => state.settingSlice);
 	const dispatch = useAppDispatch();
 	const { id } = useParams();
 	const [items, setItems] = useState<any[]>([]);
@@ -46,7 +47,7 @@ const Table: FC<TableProps> = ({ model }) => {
 		<div className={style.wrapper}>
 			<TableHeader />
 			<Search />
-			<TableComponent columns={constants[model]} data={items} view={view} page={page} status={status} />
+			<TableComponent columns={constants[language][model]} data={items} view={view} page={page} status={status} />
 			{items.length >= 10 && <Pagination count={Math.ceil(items.length / 10)} active={page} setPage={setPage} />}
 		</div>
 	);
