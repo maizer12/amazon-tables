@@ -6,6 +6,7 @@ import { DropdownItemType } from '../../../components/Dropdown/Dropdown.props';
 const initialState: TableSliceStates = {
 	model: 'accounts',
 	sort: { name: '', value: '' },
+	search: '',
 };
 
 const tableSlice = createSlice({
@@ -18,9 +19,12 @@ const tableSlice = createSlice({
 		setSort(state, action: { payload: DropdownItemType }) {
 			state.sort = action.payload;
 		},
+		setSearch(state, action: { payload: string }) {
+			state.search = action.payload;
+		},
 	},
 });
 
-export const { setModel, setSort } = tableSlice.actions;
+export const { setModel, setSort, setSearch } = tableSlice.actions;
 
 export default tableSlice.reducer;

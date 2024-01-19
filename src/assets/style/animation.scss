@@ -1,0 +1,25 @@
+@keyframes animTransform {
+	0% {
+		transform: translateX(10px);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(10px);
+		opacity: 1;
+	}
+}
+@keyframes animOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.anim-transform {
+	animation: animTransform 1s 1 ease-in-out;
+}
+.anim-opacity {
+	animation: animOpacity 1s 1 ease-in-out;
+}
