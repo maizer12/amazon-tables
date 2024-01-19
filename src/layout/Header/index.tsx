@@ -1,5 +1,5 @@
-import { FC } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { FC, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import style from './Header.module.scss';
 import { HTag, Switcher } from '../../common';
@@ -11,6 +11,12 @@ const Header: FC = () => {
 	const { whiteTheme, language } = useAppSelector(state => state.settingSlice);
 	const dispatch = useAppDispatch();
 	const getSwitchTitle = switchTitle[language];
+
+	useEffect(() => {
+		const localStorageData = { language, whiteTheme };
+
+		localStorage.setItem('setting', JSON.stringify(localStorageData));
+	}, [whiteTheme, language]);
 
 	return (
 		<header className={style.header}>

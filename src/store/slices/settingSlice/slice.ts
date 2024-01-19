@@ -1,9 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { SettingSliceActions } from './types';
 
+const storedData = localStorage.getItem('setting');
+
+const data: SettingSliceActions = storedData ? JSON.parse(storedData) : '';
+
 const initialState: SettingSliceActions = {
-	whiteTheme: true,
-	language: 'ue',
+	whiteTheme: data.whiteTheme,
+	language: data.language,
 };
 
 const settingSlice = createSlice({
