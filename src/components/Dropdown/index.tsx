@@ -26,14 +26,21 @@ export const Dropdown: FC<DropdownProps> = ({ items, changeDropdown, activeItem 
 	}, [windowRef, setOpen]);
 
 	const selectItem = (e: DropdownItemType) => {
-		changeDropdown(e);
+		if (e.value === activeItem) {
+			changeDropdown({ name: '', value: '' });
+		} else {
+			changeDropdown(e);
+		}
+
 		setOpen(false);
 	};
+
+	const fullItem = items.find(e => e.value === activeItem);
 
 	return (
 		<div className={style.dropdown} ref={windowRef}>
 			<Button onClick={() => setOpen(!open)} variable='primary' arrow='bottom'>
-				Sort by: None
+				Sort by: {fullItem ? fullItem.name : 'none'}
 			</Button>
 			{open && (
 				<ul className={style.list}>

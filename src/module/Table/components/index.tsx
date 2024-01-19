@@ -12,17 +12,19 @@ import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { setModel } from '../store/tableSlice';
 
 const Table: FC<TableProps> = ({ model }) => {
+	const { sort } = useAppSelector(state => state.tableSlice);
 	const dispatch = useAppDispatch();
 	const { id } = useParams();
 	const [items, setItems] = useState<any[]>([]);
-	const [status, setStatus] = useState<'loading' | 'error' | 'empty' | ''>('');
+	const [status, setStatus] = useState<'loading' | 'error' | ''>('');
 	const [page, setPage] = useState<number>(1);
 
 	useEffect(() => {
 		const getData = async () => {
 			setStatus('loading');
 			try {
-				const res = await fetchData(model, { page, id });
+				const params = { page, id, sortBy: String(sort.value) };
+				const res = await fetchData(model, params);
 				setItems(res);
 				setStatus('');
 			} catch (err) {
@@ -31,7 +33,7 @@ const Table: FC<TableProps> = ({ model }) => {
 		};
 
 		getData();
-	}, [page]);
+	}, [page, sort]);
 
 	useEffect(() => {
 		dispatch(setModel(model));

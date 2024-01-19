@@ -5,7 +5,7 @@ import { DropdownItemType } from '../../../components/Dropdown/Dropdown.props';
 
 const initialState: TableSliceStates = {
 	model: 'accounts',
-	sort: {},
+	sort: { name: '', value: '' },
 };
 
 const tableSlice = createSlice({
