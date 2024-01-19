@@ -11,7 +11,7 @@ const Pagination: FC<PaginationProps> = ({ count, active, setPage }) => {
 			<li>
 				<Button variable='outline' arrow='left' disabled={!(active - 1)} onClick={() => setPage(active - 1)} />
 			</li>
-			{arr.map((e, i) => (
+			{arr.map((_, i) => (
 				<li key={i} onClick={() => setPage(i + 1)}>
 					<Button variable={active === i + 1 ? 'primary' : 'outline'}>{i + 1}</Button>
 				</li>
